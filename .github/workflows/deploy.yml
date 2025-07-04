@@ -29,24 +29,4 @@ jobs:
       - name: Push Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/todo_updates:latest
 
-      # Step 5: Set up kubectl
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v3
-        with:
-          version: 'latest'
-
-      # Step 6: Decode and Save Kubeconfig
-      - name: Decode Kubeconfig
-        run: |
-          mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > $HOME/.kube/config
-
-      # Optional Debug Step (verify kubeconfig)
-      - name: Verify Kubeconfig
-        run: |
-          ls -la $HOME/.kube
-          head -n 10 $HOME/.kube/config
-
-      # Step 7: Deploy to Kubernetes
-      - name: Deploy to Kubernetes
-        run: kubectl apply -f todo-deployment.yaml
+      
