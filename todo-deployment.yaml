@@ -15,6 +15,6 @@ spec:
       containers:
       - name: todo-container
         image: jwalitha/todo-app:latest
-        imagePullPolicy: Always   # 👈 Tells Kubernetes not to pull from Docker Hub
+        imagePullPolicy: Always   # 👈 Tells Kubernetes to pull from Docker Hub
         ports:
         - containerPort: 80
